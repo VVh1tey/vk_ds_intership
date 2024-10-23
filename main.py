@@ -8,8 +8,13 @@ import joblib
 from src import preprocess
 
 import os
+import zipfile
 
 if __name__ == "__main__":
+    if os.path.exists(".models.zip"):
+        with zipfile.ZipFile('.models.zip', 'r') as zip_ref:
+            zip_ref.extractall('./models/')
+    
     path = None
     while path is None:
         path = input("Enter local path to data.parquet\nsample path: ./data.parquet\n")
